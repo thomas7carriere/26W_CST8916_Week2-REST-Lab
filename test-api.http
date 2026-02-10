@@ -46,3 +46,79 @@ Content-Type: application/json
 
 # DELETE a user by ID
 DELETE http://localhost:8000/users/1
+
+###
+
+# GET all tasks
+GET http://localhost:8000/tasks
+Accept: application/json
+
+###
+
+# GET a specific task by ID
+GET http://localhost:8000/tasks/1
+Accept: application/json
+
+###
+
+# GET a task that doesn't exist
+GET http://localhost:8000/tasks/100
+Accept: application/json
+
+###
+
+# POST a new task (valid data)
+POST http://localhost:8000/tasks
+Content-Type: application/json
+
+{
+  "title": "test task",
+  "description": "description of test task",
+  "user_id": 2,
+  "completed": true
+}
+
+###
+
+# POST a task with missing title
+POST http://localhost:8000/tasks
+Content-Type: application/json
+
+{
+  "description": "description of task with no title",
+  "user_id": 1,
+  "completed": true
+}
+###
+
+# POST a task with invalid user_id
+POST http://localhost:8000/tasks
+Content-Type: application/json
+
+{
+  "title": "title of task with no user_id",
+  "description": "description of task with no user_id",
+  "completed": true
+}
+###
+
+# PUT to update a task
+PUT http://localhost:8000/tasks/2
+Content-Type: application/json
+
+{
+  "title": "updated test task",
+  "description": "updated description of test task",
+  "completed": false
+}
+###
+
+# DELETE a task
+DELETE http://localhost:8000/tasks/1
+
+###
+
+# GET tasks for a specific user
+GET http://localhost:8000/users/2/tasks
+Accept: application/json
+###
